@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Article{% endblock %}
+
+{% block body %}
+
+    <h2>{{ article.title }}</h2> 
+
+
+<div >
+  <div>
+    <label><b>DATE </b></label> {{ article.date ? article.date|date('d-m-Y') : '' }}
+  </div>
+  <div style="background-color:orange;color:white;padding:10px; width: 50%;">
+  <h2>{{ article.title }}</h2>
+  <p>{{ article.content }}</p>
+</div>
+  
+</div>
+
+<br>
+<br>
+<a href="{{ path('article_index') }}" class="btn btn-primary">RETOUR A LA LISTE</a> </br> </br>
+{% if app.user %}
+<a href="{{ path('article_edit', {'id': article.id}) }}"  class="btn btn-primary">EDITER</a> 
+{% endif %}</br></br>
+
+
+    {{ include('article/_delete_form.html.twig') }}
+{% endblock %}
+
+
+

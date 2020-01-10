@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+        <nav>
+        <div class="nav-wrapper blue">
+            <div class="container">
+                <a href="#" class="brand-logo">BLOG PERSONNEL</a>
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="{{ path('article_index') }}">Articles</a></li>
+                    {% if app.user %}
+                    <li><a href="{{ path('article_new') }}">Add article</a></li>
+                    {% endif %}
+                    <li><a href="{{ path('category_index') }}">Categories</a></li>
+                    {% if app.user %}
+                    <li><a href="{{ path('category_new') }}">Add category</a></li>
+                    {% endif %}
+                    {% if app.user %}
+                        <li><a href="/logout">Logout</a></li>
+                    {% else %}
+                        <li><a href="/login">Login</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+        {% block body %}{% endblock %}
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>
